@@ -21,17 +21,25 @@ Route::get('/', function () {
 
 // Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-//rotta che passa per il middleware di autenticazione
-Route::middleware('auth', 'verified')
-//nome rotte inizierà per admin
-->name('admin.')
-//il prefisso sarà admin/...
-->prefix('admin')
-//raggruppo tutto 
-->group(function () {
-    // aggiungo qui le varie rotte di admin tra cui le CRUD
-    Route::get('/dashboard', DashboardController::class, 'index')->name('dashboard');
+// //rotta che passa per il middleware di autenticazione
+// Route::middleware(['auth', 'verified'])
+// //nome rotte inizierà per admin
+// ->name('admin.')
+// //il prefisso sarà admin/...
+// ->prefix('admin')
+// //raggruppo tutto 
+// ->group(function () {
+//     // aggiungo qui le varie rotte di admin tra cui le CRUD
+//     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     
+// });
+
+Route::middleware(['auth', 'verified'])
+->name('admin.')
+->prefix('admin')
+->group(function() {
+    // Le varie rotte di amministrazione
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
 Route::middleware('auth')->group(function () {
