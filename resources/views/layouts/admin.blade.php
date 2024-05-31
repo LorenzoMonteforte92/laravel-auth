@@ -53,9 +53,14 @@
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                                 </a>
                             </li>
-                            <li>
+                            <li class="" >
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.projects.index' ? 'bg-secondary' : '' }}" href="{{ route('admin.projects.index') }}">
-                                    <i class="fa-solid fa-diagram-project"></i> Projects
+                                    <i class="fa-solid fa-diagram-project"></i> My Projects
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.projects.create' ? 'bg-secondary' : '' }}" href="{{ route('admin.projects.create') }}">
+                                    <i class="fa-solid fa-square-plus"></i> New Project
                                 </a>
                             </li>
                         </ul>
