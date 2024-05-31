@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class ProjectController extends Controller
 {
@@ -44,6 +45,12 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate(
+            [
+                'name' => 'required|min:6|unique:projects,name', //unique si specifica il nome della tabella e della colonna
+                'client_name' => 'required|min:6|',
+            ]
+        );
         $formData = $request->all();
         $newProject = new Project();
         $newProject->fill($formData);
@@ -90,6 +97,17 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+        $validated = $request->validate(
+            [
+                'name' => [
+                    'required',
+                    'min:6',
+                    Rule::unique('projects')->ignore($project)
+                ],//devo aggiungere 
+                'client_name' => 'required|min:6|',
+            ]
+        );
+
         $formData = $request->all();
         $project->slug = Str::slug($formData['name'], '-');
         $project->update($formData);
