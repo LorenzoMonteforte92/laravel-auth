@@ -49,10 +49,10 @@
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}" href="#">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}" href="{{ route('admin.dashboard') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                                 </a>
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.projects' ? 'bg-secondary' : '' }}" href="#">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.projects.index' ? 'bg-secondary' : '' }}" href="{{ route('admin.projects.index') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Projects
                                 </a>
                             </li>

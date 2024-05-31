@@ -22,7 +22,7 @@ class ProjectController extends Controller
 
             'projects' => $projects,
        ];
-       return view('admin.project.index', $data); 
+       return view('admin.projects.index', $data); 
     }
 
     /**
