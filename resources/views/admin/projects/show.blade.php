@@ -15,7 +15,7 @@
                       @endif
                       <p class="card-text"><strong>Date of creation:</strong> {{ $project->created_at }}</p>
                       <p class="card-text"><strong>Last updated:</strong> {{ $project->updated_at }}</p>
-                      <a href="#" class="btn btn-primary">Edit</a>
+                      <a href="{{ route('admin.projects.edit', ['project' => $project->id]) }}" class="btn btn-primary">Edit</a>
                       <a href="#" class="btn btn-danger">Delete</a>
                     </div>
                   </div>
