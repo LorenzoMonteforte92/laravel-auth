@@ -42,7 +42,7 @@ Route::middleware(['auth', 'verified'])
     // Le varie rotte di amministrazione
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('projects', ProjectController::class)->parameters([
-        'projects' => 'project::slug'
+        'projects' => 'project:slug'
     ]);
 });
 
