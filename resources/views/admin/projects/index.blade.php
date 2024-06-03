@@ -20,9 +20,9 @@
                 <td>{{$singleProject->client_name}}</td>
                 <td>{{$singleProject->created_at}}</td>
                 <td class="d-flex justify-content-between gap-3" >
-                    <div><a href="{{ route('admin.projects.show', ['project' => $singleProject->id]) }}"><i class="fa-solid fa-ellipsis"></i></a></div>
-                    <div><a href="{{ route('admin.projects.edit', ['project' => $singleProject->id]) }}"><i class="fa-solid fa-pen-to-square"></i></a></div>
-                    <form action="{{ route('admin.projects.destroy', ['project' => $singleProject->id]) }}" method="POST">
+                    <div><a href="{{ route('admin.projects.show', ['project' => $singleProject->slug]) }}"><i class="fa-solid fa-ellipsis"></i></a></div>
+                    <div><a href="{{ route('admin.projects.edit', ['project' => $singleProject->slug]) }}"><i class="fa-solid fa-pen-to-square"></i></a></div>
+                    <form action="{{ route('admin.projects.destroy', ['project' => $singleProject->slug]) }}" method="POST">
                         @csrf
                         @method('DELETE')
 
