@@ -2,9 +2,15 @@
 
 @section('content')
     <div class="container">
+      @if (session('success'))
+         <div class="alert alert-success">
+             {{ session('success') }}
+         </div>
+       @endif
         <div class="row">
             <div class="col d-flex align-items-center flex-column gap-4">
                 <h2>Project information</h2>
+                
                 <div class="card" style="width: 60%;">
                     @if ($project->image)
                       <div class="text-center py-3" >
