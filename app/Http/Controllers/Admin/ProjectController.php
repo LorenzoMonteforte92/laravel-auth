@@ -54,7 +54,7 @@ class ProjectController extends Controller
         );
 
         $formData = $request->all();
-//se c'è il file uploudato dall'utente 
+        //se c'è il file uploudato dall'utente 
         if($request->hasFile('image')){
             //passo il file nella cartella pubblica importando la classe Storage e salvo il path in una variabile
             $img_path = Storage::disk('public')->put('project_covers', $formData['image']);
@@ -122,6 +122,21 @@ class ProjectController extends Controller
         );
 
         $formData = $request->all();
+
+        //se c'è il file uploudato dall'utente 
+        if($request->hasFile('image')){
+            //se è già presente un'immagine cancellala
+            if($project->image){
+                Storage::delete($project->image);
+            }
+
+            //passo il file nella cartella pubblica importando la classe Storage e salvo il path in una variabile
+            $img_path = Storage::disk('public')->put('project_covers', $formData['image']);
+            //rendo l'imput del form uguale al path salvato nella variabile così che funzionerà coi fillable
+            $formData['image'] = $img_path;
+            
+        };
+
         $project->slug = Str::slug($formData['name'], '-');
         $project->update($formData);
 

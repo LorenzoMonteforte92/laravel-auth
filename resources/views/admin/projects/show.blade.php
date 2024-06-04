@@ -6,9 +6,15 @@
             <div class="col d-flex align-items-center flex-column gap-4">
                 <h2>Project information</h2>
                 <div class="card" style="width: 60%;">
-                    <div class="text-center py-3" >
-                      <img src="{{ asset('storage/' . $project->image) }}" class="card-img-top ms-card-img" alt="{{ $project->name }}">
-                    </div>
+                    @if ($project->image)
+                      <div class="text-center py-3" >
+                        <img src="{{ asset('storage/' . $project->image) }}" class="card-img-top ms-card-img" alt="{{ $project->name }}">
+                      </div>
+                    @else
+                        <div class="d-flex justify-content-center align-items-center py-3" >
+                            <div>No uploaded image</div>
+                        </div>
+                    @endif
                     <div class="card-body">
                       <p class="card-title"><strong>Project name:</strong> {{ $project->name }}</p>
                       <p class="card-text"><strong>Slug</strong>: {{ $project->slug }}</p>
